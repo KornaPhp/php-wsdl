@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Soap\Wsdl\Test\Unit\Loader;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Soap\Wsdl\Loader\FlatteningLoader;
 use Soap\Wsdl\Loader\StreamWrapperLoader;
@@ -18,10 +19,7 @@ final class FlatteningLoaderTest extends TestCase
         $this->loader = new FlatteningLoader(new StreamWrapperLoader());
     }
 
-    /**
-     *
-     * @dataProvider provideTestCases
-     */
+    #[DataProvider('provideTestCases')]
     public function test_it_can_load_flattened_imports(string $wsdl, Document $expected): void
     {
         $result = ($this->loader)($wsdl);

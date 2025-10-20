@@ -3,16 +3,14 @@ declare(strict_types=1);
 
 namespace SoapTest\Wsdl\Xml\Validator;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Soap\Wsdl\Xml\Validator\SchemaSyntaxValidator;
 use VeeWee\Xml\Dom\Document;
 
 final class SchemaSyntaxValidatorTest extends TestCase
 {
-    /**
-     *
-     * @dataProvider provideTestCases
-     */
+    #[DataProvider('provideTestCases')]
     public function test_it_can_validate_errors(string $wsdl, array $errorMessages): void
     {
         $validator = new SchemaSyntaxValidator();

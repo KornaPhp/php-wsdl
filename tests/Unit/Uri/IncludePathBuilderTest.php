@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Soap\Wsdl\Test\Unit\Uri;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Soap\Wsdl\Uri\IncludePathBuilder;
 
 final class IncludePathBuilderTest extends TestCase
 {
-    /**
-     *
-     * @dataProvider provideBuildPaths
-     */
+    #[DataProvider('provideBuildPaths')]
     public function test_it_can_build_include_paths(string $relativePath, string $fromFile, string $expected): void
     {
         static::assertSame($expected, IncludePathBuilder::build($relativePath, $fromFile));

@@ -2,16 +2,14 @@
 
 namespace SoapTest\Wsdl\Unit\Xml\Visitor;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Soap\Wsdl\Xml\Visitor\ReprefixTypeQname;
 use VeeWee\Xml\Dom\Document;
 
 final class ReprefixTypeQnameTest extends TestCase
 {
-    /**
-     *
-     * @dataProvider provideCases
-     */
+    #[DataProvider('provideCases')]
     public function test_it_can_reprefix_qname_types(string $input, string $expected): void
     {
         $doc = Document::fromXmlString($input);

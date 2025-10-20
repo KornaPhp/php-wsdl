@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Soap\Wsdl\Test\Unit\Xml\Configurator;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Soap\Wsdl\Loader\Context\FlatteningContext;
 use Soap\Wsdl\Loader\StreamWrapperLoader;
@@ -13,10 +14,7 @@ use function VeeWee\Xml\Dom\Configurator\comparable;
 
 final class FlattenXsdImportsTest extends TestCase
 {
-    /**
-     *
-     * @dataProvider provideTestCases
-     */
+    #[DataProvider('provideTestCases')]
     public function test_it_can_flatten_xsd_imports(string $wsdl, Document $expected, callable $xmlConfigurator): void
     {
         $wsdlDoc = Document::fromXmlFile($wsdl);
@@ -34,52 +32,52 @@ final class FlattenXsdImportsTest extends TestCase
         yield 'single-xsd' => [
             'wsdl' => FIXTURE_DIR.'/flattening/single-xsd.wsdl',
             'expected' => Document::fromXmlFile(FIXTURE_DIR.'/flattening/result/single-xsd-result.wsdl'),
-            comparable(),
+            "xmlConfigurator" => comparable(),
         ];
         yield 'once-xsd' => [
             'wsdl' => FIXTURE_DIR.'/flattening/once-xsd.wsdl',
             'expected' => Document::fromXmlFile(FIXTURE_DIR.'/flattening/result/once-xsd-result.wsdl'),
-            comparable(),
+            "xmlConfigurator" => comparable(),
         ];
         yield 'multi-xsd' => [
             'wsdl' => FIXTURE_DIR.'/flattening/multi-xsd.wsdl',
             'expected' => Document::fromXmlFile(FIXTURE_DIR.'/flattening/result/multi-xsd-result.wsdl'),
-            comparable(),
+            "xmlConfigurator" => comparable(),
         ];
         yield 'circular-xsd' => [
             'wsdl' => FIXTURE_DIR.'/flattening/circular-xsd.wsdl',
             'expected' => Document::fromXmlFile(FIXTURE_DIR.'/flattening/result/circular-xsd-result.wsdl'),
-            comparable(),
+            "xmlConfigurator" => comparable(),
         ];
         yield 'redefine-xsd' => [
             'wsdl' => FIXTURE_DIR.'/flattening/redefine-xsd.wsdl',
             'expected' => Document::fromXmlFile(FIXTURE_DIR.'/flattening/result/redefine-xsd-result.wsdl'),
-            comparable(),
+            "xmlConfigurator" => comparable(),
         ];
         yield 'tnsless-xsd' => [
             'wsdl' => FIXTURE_DIR.'/flattening/tnsless-xsd.wsdl',
             'expected' => Document::fromXmlFile(FIXTURE_DIR.'/flattening/result/tnsless-xsd-result.wsdl'),
-            comparable(),
+            "xmlConfigurator" => comparable(),
         ];
         yield 'grouped-xsd' => [
             'wsdl' => FIXTURE_DIR.'/flattening/grouped-xsd.wsdl',
             'expected' => Document::fromXmlFile(FIXTURE_DIR.'/flattening/result/grouped-xsd-result.wsdl'),
-            comparable(),
+            "xmlConfigurator" => comparable(),
         ];
         yield 'root-xmlns-import-issue' => [
             'wsdl' => FIXTURE_DIR.'/flattening/root-xmlns-import-issue.wsdl',
             'expected' => Document::fromXmlFile(FIXTURE_DIR.'/flattening/result/root-xmlns-import-issue-result.wsdl'),
-            canonicalize(),
+            "xmlConfigurator" => canonicalize(),
         ];
         yield 'rearranged-imports' => [
             'wsdl' => FIXTURE_DIR.'/flattening/rearranged-imports.wsdl',
             'expected' => Document::fromXmlFile(FIXTURE_DIR.'/flattening/result/rearranged-imports.wsdl'),
-            comparable(),
+            "xmlConfigurator" => comparable(),
         ];
         yield 'import-xmlns-issue' => [
             'wsdl' => FIXTURE_DIR.'/flattening/conflicting-imports.wsdl',
             'expected' => Document::fromXmlFile(FIXTURE_DIR.'/flattening/result/conflicting-imports.wsdl'),
-            canonicalize(),
+            "xmlConfigurator" => canonicalize(),
         ];
     }
 }

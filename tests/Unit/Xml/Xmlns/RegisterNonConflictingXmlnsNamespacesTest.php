@@ -2,16 +2,14 @@
 
 namespace SoapTest\Wsdl\Unit\Xml\Xmlns;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Soap\Wsdl\Xml\Xmlns\RegisterNonConflictingXmlnsNamespaces;
 use VeeWee\Xml\Dom\Document;
 
 final class RegisterNonConflictingXmlnsNamespacesTest extends TestCase
 {
-    /**
-     *
-     * @dataProvider provideCases
-     */
+    #[DataProvider('provideCases')]
     public function test_it_registers_non_conflicting_namespaces(
         string $existingSchemaXml,
         string $importedSchemaXml,
