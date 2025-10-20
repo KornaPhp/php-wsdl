@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Soap\Wsdl\Test\Unit\Xml\Configurator;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Soap\Wsdl\Xml\Configurator\FlattenTypes;
 use VeeWee\Xml\Dom\Document;
@@ -10,10 +11,7 @@ use function VeeWee\Xml\Dom\Configurator\comparable;
 
 final class FlattenTypesTest extends TestCase
 {
-    /**
-     *
-     * @dataProvider provideTestCases
-     */
+    #[DataProvider('provideTestCases')]
     public function test_it_can_flatten_types(string $wsdl, Document $expected): void
     {
         $wsdlDoc = Document::fromXmlFile($wsdl, new FlattenTypes(), comparable());

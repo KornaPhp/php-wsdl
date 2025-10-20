@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Soap\Wsdl\Test\Unit\Xml\Configurator;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Soap\Wsdl\Loader\Context\FlatteningContext;
 use Soap\Wsdl\Loader\StreamWrapperLoader;
@@ -12,10 +13,7 @@ use function VeeWee\Xml\Dom\Configurator\comparable;
 
 final class FlattenWsdlImportsTest extends TestCase
 {
-    /**
-     *
-     * @dataProvider provideTestCases
-     */
+    #[DataProvider('provideTestCases')]
     public function test_it_can_flatten_wsdl_imports(string $wsdl, Document $expected): void
     {
         $wsdlDoc = Document::fromXmlFile($wsdl);
