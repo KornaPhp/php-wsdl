@@ -20,13 +20,13 @@ final class IncludePathBuilderTest extends TestCase
     {
         yield 'same-dir-file' => [
             'relativePath' => 'otherfile.xml',
-            'fromFile' => 'somedir/somefile.xml',
-            'expected' => 'somedir/otherfile.xml',
+            'fromFile' => '/somedir/somefile.xml',
+            'expected' => '/somedir/otherfile.xml',
         ];
         yield 'child-dir-file' => [
             'relativePath' => '../otherfile.xml',
-            'fromFile' => 'somedir/child/somefile.xml',
-            'expected' => 'somedir/otherfile.xml',
+            'fromFile' => '/somedir/child/somefile.xml',
+            'expected' => '/somedir/otherfile.xml',
         ];
         yield 'http-file' => [
             'relativePath' => 'otherfile.xml',
