@@ -32,7 +32,7 @@
         "league/uri": "^7.0",
         "league/uri-components": "^7.0",
         "php-soap/xml": "^1.9",
-        "symfony/console": "^5.4 || ^6.0 || ^7.0",
+        "symfony/console": "^5.4 || ^6.0 || ^7.0 || ^8.0",
         "veewee/xml": "~3.0"
     },
     "require-dev": {
